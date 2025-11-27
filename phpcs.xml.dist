@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+<ruleset name="MethorZ OpenAPI Generator Coding Standard">
+    <description>Coding standard for MethorZ OpenAPI Generator package</description>
+
+    <!-- Paths to check -->
+    <file>src</file>
+    <file>tests</file>
+
+    <!-- Use colors in output -->
+    <arg name="colors"/>
+    <!-- Show progress -->
+    <arg value="p"/>
+    <!-- Show sniff codes -->
+    <arg value="s"/>
+    <!-- Use parallel processing (150 files at once) -->
+    <arg name="parallel" value="150"/>
+
+    <!-- Base rule: PSR-12 -->
+    <rule ref="PSR12"/>
+
+    <!-- Slevomat Coding Standard -->
+    <config name="installed_paths" value="../../slevomat/coding-standard"/>
+    <rule ref="SlevomatCodingStandard">
+        <!-- Disable ClassStructure sniff (too complex to configure) -->
+        <exclude name="SlevomatCodingStandard.Classes.ClassStructure"/>
+
+        <!-- Disable some overly strict rules -->
+        <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousAbstractClassNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousExceptionNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousInterfaceNaming"/>
+        <exclude name="SlevomatCodingStandard.Classes.SuperfluousTraitNaming"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.DisallowEmpty"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.EarlyExit"/>
+        <exclude name="SlevomatCodingStandard.Files.TypeNameMatchesFileName"/>
+        <exclude name="SlevomatCodingStandard.Functions.DisallowArrowFunction"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedClassNameInAnnotation"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedExceptions"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalConstants"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.FullyQualifiedGlobalFunctions"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.UseOnlyWhitelistedNamespaces"/>
+        <exclude name="SlevomatCodingStandard.Numbers.RequireNumericLiteralSeparator"/>
+        <exclude name="SlevomatCodingStandard.PHP.RequireExplicitAssertion"/>
+        <exclude name="SlevomatCodingStandard.TypeHints.DisallowArrayTypeHintSyntax"/>
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireYodaComparison"/>
+    </rule>
+
+    <!-- Unused use statements -->
+    <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
+        <properties>
+            <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Strict types declaration -->
+    <rule ref="SlevomatCodingStandard.TypeHints.DeclareStrictTypes">
+        <properties>
+            <property name="declareOnFirstLine" value="false"/>
+            <property name="spacesCountAroundEqualsSign" value="0"/>
+        </properties>
+    </rule>
+
+    <!-- Cyclomatic complexity -->
+    <rule ref="Generic.Metrics.CyclomaticComplexity">
+        <properties>
+            <property name="complexity" value="15"/>
+            <property name="absoluteComplexity" value="15"/>
+        </properties>
+    </rule>
+
+    <!-- Disable cognitive complexity (covered by cyclomatic complexity) -->
+    <rule ref="SlevomatCodingStandard.Complexity.Cognitive">
+        <exclude name="SlevomatCodingStandard.Complexity.Cognitive"/>
+    </rule>
+
+    <!-- Disable function length (covered by complexity metrics) -->
+    <rule ref="SlevomatCodingStandard.Functions.FunctionLength">
+        <exclude name="SlevomatCodingStandard.Functions.FunctionLength"/>
+    </rule>
+
+    <!-- Disable constructor property promotion rule (we use it extensively) -->
+    <rule ref="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion">
+        <exclude name="SlevomatCodingStandard.Classes.RequireConstructorPropertyPromotion"/>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion">
+        <exclude name="SlevomatCodingStandard.Classes.DisallowConstructorPropertyPromotion"/>
+    </rule>
+
+    <!-- Allow useless parentheses in new (modern PHP style) -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.UselessIfConditionWithReturn">
+        <exclude name="SlevomatCodingStandard.ControlStructures.UselessIfConditionWithReturn"/>
+    </rule>
+
+    <!-- Disable strict empty line rules (cosmetic preference) -->
+    <rule ref="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces">
+        <exclude name="SlevomatCodingStandard.Classes.EmptyLinesAroundClassBraces"/>
+    </rule>
+
+    <!-- Disable alphabetical array key sorting (too strict) -->
+    <rule ref="SlevomatCodingStandard.Arrays.AlphabeticallySortedByKeys">
+        <exclude name="SlevomatCodingStandard.Arrays.AlphabeticallySortedByKeys"/>
+    </rule>
+
+    <!-- Disable one-line docblock requirement (allow multi-line for clarity) -->
+    <rule ref="SlevomatCodingStandard.Commenting.RequireOneLineDocComment">
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLineDocComment"/>
+    </rule>
+
+    <!-- Disable ternary operator requirement (readability preference) -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator">
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireTernaryOperator"/>
+    </rule>
+
+    <!-- Allow named arguments (PHP 8+ feature) -->
+    <rule ref="SlevomatCodingStandard.Functions.DisallowNamedArguments">
+        <exclude name="SlevomatCodingStandard.Functions.DisallowNamedArguments"/>
+    </rule>
+
+    <!-- Allow trailing commas in function calls (PHP 8+ feature) -->
+    <rule ref="SlevomatCodingStandard.Functions.DisallowTrailingCommaInCall">
+        <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInCall"/>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Functions.DisallowTrailingCommaInDeclaration">
+        <exclude name="SlevomatCodingStandard.Functions.DisallowTrailingCommaInDeclaration"/>
+    </rule>
+
+    <!-- Allow multi-line function calls for readability -->
+    <rule ref="SlevomatCodingStandard.Functions.RequireSingleLineCall">
+        <exclude name="SlevomatCodingStandard.Functions.RequireSingleLineCall"/>
+    </rule>
+
+    <!-- Allow single-line method signatures -->
+    <rule ref="SlevomatCodingStandard.Classes.RequireSingleLineMethodSignature">
+        <exclude name="SlevomatCodingStandard.Classes.RequireSingleLineMethodSignature"/>
+    </rule>
+    <rule ref="SlevomatCodingStandard.Classes.RequireMultiLineMethodSignature">
+        <exclude name="SlevomatCodingStandard.Classes.RequireMultiLineMethodSignature"/>
+    </rule>
+
+    <!-- Allow flexible ternary operator formatting -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator">
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireMultiLineTernaryOperator"/>
+    </rule>
+
+    <!-- Allow flexible if condition formatting -->
+    <rule ref="SlevomatCodingStandard.ControlStructures.RequireMultiLineCondition">
+        <exclude name="SlevomatCodingStandard.ControlStructures.RequireMultiLineCondition"/>
+    </rule>
+
+    <!-- Allow passing by reference when needed -->
+    <rule ref="SlevomatCodingStandard.PHP.DisallowReference">
+        <exclude name="SlevomatCodingStandard.PHP.DisallowReference"/>
+    </rule>
+
+    <!-- Exclude vendor and cache directories -->
+    <exclude-pattern>*/vendor/*</exclude-pattern>
+    <exclude-pattern>*/.phpunit.cache/*</exclude-pattern>
+    <exclude-pattern>*/tests/Fixtures/*</exclude-pattern>
+</ruleset>
