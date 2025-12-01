@@ -123,10 +123,14 @@ final class DtoSchemaGeneratorTest extends TestCase
         $this->assertIsArray($schema['required']);
         /** @var array<int, string> $required */
         $required = $schema['required'];
-        $this->assertContains('name', $required); // Has @Assert\NotBlank
-        $this->assertNotContains('email', $required); // No @Assert\NotBlank, just @Assert\Email
-        $this->assertNotContains('age', $required); // No @Assert\NotBlank, just @Assert\Range
-        $this->assertNotContains('optional', $required); // Nullable
+        // Has @Assert\NotBlank
+        $this->assertContains('name', $required);
+        // No @Assert\NotBlank, just @Assert\Email
+        $this->assertNotContains('email', $required);
+        // No @Assert\NotBlank, just @Assert\Range
+        $this->assertNotContains('age', $required);
+        // Nullable
+        $this->assertNotContains('optional', $required);
     }
 
     public function testGetSchemaName(): void
@@ -144,4 +148,3 @@ final class DtoSchemaGeneratorTest extends TestCase
         $this->assertEmpty($schema);
     }
 }
-

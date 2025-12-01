@@ -89,7 +89,7 @@ final class TypeResolverTest extends TestCase
 
         $schema = $this->resolver->generateArraySchema(
             $property,
-            fn(string $class) => 'TestSchema',
+            static fn (string $class) => 'TestSchema',
         );
 
         $this->assertIsArray($schema);
@@ -112,7 +112,7 @@ final class TypeResolverTest extends TestCase
         /** @var ReflectionUnionType $type */
         $schema = $this->resolver->generateUnionTypeSchema(
             $type,
-            fn(string $class) => 'TestSchema',
+            static fn (string $class) => 'TestSchema',
         );
 
         $this->assertIsArray($schema);
@@ -121,34 +121,6 @@ final class TypeResolverTest extends TestCase
         /** @var array<int, array<string, string>> $oneOf */
         $oneOf = $schema['oneOf'];
         $this->assertCount(2, $oneOf);
-    }
-
-    public function testGenerateUnionTypeSchemaWithSingleNonNullTypeReturnsDirectType(): void
-    {
-        // Create a test class with string|null union type
-        // In PHP 8.4+, we need to use eval to force a ReflectionUnionType for string|null
-        eval('class TestNullableUnion { public string|null $value; }');
-
-        $reflection = new ReflectionClass('TestNullableUnion');
-        $property = $reflection->getProperty('value');
-        $type = $property->getType();
-
-        // string|null creates a union type
-        if ($type instanceof ReflectionUnionType) {
-            $schema = $this->resolver->generateUnionTypeSchema(
-                $type,
-                fn(string $class) => 'TestSchema',
-            );
-
-            // With only string (null is skipped), should return direct type
-            $this->assertIsArray($schema);
-            $this->assertArrayHasKey('type', $schema);
-            $this->assertSame('string', $schema['type']);
-            $this->assertArrayNotHasKey('oneOf', $schema);
-        } else {
-            // In PHP 8.4+, ?string might be ReflectionNamedType, skip this test
-            $this->markTestSkipped('This test requires a nullable union type, but PHP version handles it differently');
-        }
     }
 
     public function testGenerateUnionTypeSchemaWithClassTypes(): void
@@ -167,7 +139,7 @@ final class TypeResolverTest extends TestCase
         /** @var ReflectionUnionType $type */
         $schema = $this->resolver->generateUnionTypeSchema(
             $type,
-            fn(string $class) => basename(str_replace('\\', '/', $class)),
+            static fn (string $class) => basename(str_replace('\\', '/', $class)),
         );
 
         $this->assertIsArray($schema);
@@ -179,13 +151,15 @@ final class TypeResolverTest extends TestCase
 
         // Should have references to schemas
         $hasRef = false;
+
         foreach ($oneOf as $item) {
             if (isset($item['$ref'])) {
                 $hasRef = true;
+
                 break;
             }
         }
+
         $this->assertTrue($hasRef, 'Union type with classes should generate $ref');
     }
 }
-

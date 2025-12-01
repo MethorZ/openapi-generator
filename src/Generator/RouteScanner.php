@@ -167,7 +167,8 @@ final class RouteScanner
         return 'API';
     }
 
-    private function generateSummary(string $handlerClass, string $httpMethod): string
+    // phpcs:ignore SlevomatCodingStandard.Functions.UnusedParameter.UnusedParameter -- Reserved for future
+    private function generateSummary(string $handlerClass, string $_httpMethod): string
     {
         $className = class_basename($handlerClass);
         $className = str_replace('Handler', '', $className);

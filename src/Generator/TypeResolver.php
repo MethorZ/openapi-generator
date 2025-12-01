@@ -44,6 +44,7 @@ final readonly class TypeResolver
             return ['type' => 'string'];
         }
 
+        // phpcs:ignore SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration.MissingVariable
         /** @var class-string<\UnitEnum> $enumClass */
         $reflection = new ReflectionEnum($enumClass);
 

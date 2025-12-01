@@ -144,9 +144,9 @@ final class ConstraintExtractorTest extends TestCase
     public function testApplyConstraintsWithMultipleConstraints(): void
     {
         $testClass = new class {
-            #[Assert\NotBlank]
-            #[Assert\Length(min: 3, max: 50)]
             #[Assert\Email]
+            #[Assert\Length(min: 3, max: 50)]
+            #[Assert\NotBlank]
             public string $email;
         };
 
@@ -209,8 +209,8 @@ final class ConstraintExtractorTest extends TestCase
     public function testHasUuidConstraintReturnsFalseWithOtherConstraints(): void
     {
         $testClass = new class {
-            #[Assert\NotBlank]
             #[Assert\Email]
+            #[Assert\NotBlank]
             public string $email;
         };
 

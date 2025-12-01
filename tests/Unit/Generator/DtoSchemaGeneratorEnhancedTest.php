@@ -7,7 +7,6 @@ namespace MethorZ\OpenApi\Tests\Unit\Generator;
 use MethorZ\OpenApi\Generator\DtoSchemaGenerator;
 use MethorZ\OpenApi\Tests\Fixtures\AddressDto;
 use MethorZ\OpenApi\Tests\Fixtures\ComplexDto;
-use MethorZ\OpenApi\Tests\Fixtures\StatusEnum;
 use PHPUnit\Framework\TestCase;
 
 final class DtoSchemaGeneratorEnhancedTest extends TestCase
@@ -42,7 +41,8 @@ final class DtoSchemaGeneratorEnhancedTest extends TestCase
         $this->assertContains('street', $required);
         $this->assertContains('city', $required);
         $this->assertContains('zipCode', $required);
-        $this->assertNotContains('country', $required); // Nullable
+        // Nullable
+        $this->assertNotContains('country', $required);
     }
 
     public function testGeneratesSchemaWithEnumType(): void
@@ -158,4 +158,3 @@ final class DtoSchemaGeneratorEnhancedTest extends TestCase
         $this->assertSame('ComplexDto', $name2);
     }
 }
-

@@ -17,6 +17,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Yaml\Yaml;
+use Throwable;
 
 use function file_get_contents;
 use function file_put_contents;
@@ -72,6 +73,7 @@ final class GenerateOpenApiCommand extends Command
             );
     }
 
+    // phpcs:ignore Generic.Metrics.CyclomaticComplexity.MaxExceeded -- Command naturally has many branches
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $output->writeln('<info>🚀 Starting OpenAPI generation...</info>');
@@ -86,11 +88,13 @@ final class GenerateOpenApiCommand extends Command
         // Override with CLI options
         $info = $openapiConfig->info;
         $titleOption = $input->getOption('title');
+
         if ($titleOption !== null && is_string($titleOption)) {
             $info['title'] = $titleOption;
         }
 
         $versionOption = $input->getOption('version');
+
         if ($versionOption !== null && is_string($versionOption)) {
             $info['version'] = $versionOption;
         }
@@ -105,7 +109,11 @@ final class GenerateOpenApiCommand extends Command
         $generateJson = (bool) $input->getOption('json') || $openapiConfig->generateJson;
 
         // Reconstruct config with overrides
-        if ($info !== $openapiConfig->info || $outputPath !== $openapiConfig->outputPath || $generateJson !== $openapiConfig->generateJson) {
+        $infoChanged = $info !== $openapiConfig->info;
+        $pathChanged = $outputPath !== $openapiConfig->outputPath;
+        $jsonChanged = $generateJson !== $openapiConfig->generateJson;
+
+        if ($infoChanged || $pathChanged || $jsonChanged) {
             $openapiConfig = new OpenApiConfig(
                 info: $info,
                 servers: $openapiConfig->servers,
@@ -122,6 +130,7 @@ final class GenerateOpenApiCommand extends Command
 
         if (!is_array($config)) {
             $output->writeln('<error>❌ Could not load application config</error>');
+
             return Command::FAILURE;
         }
 
@@ -140,14 +149,16 @@ final class GenerateOpenApiCommand extends Command
         $dtoClasses = $this->findAllDtos('src');
 
         $schemas = [];
+
         foreach ($dtoClasses as $dtoClass) {
             try {
                 $schema = $schemaGenerator->generate($dtoClass);
+
                 if (!empty($schema)) {
                     $schemaName = $schemaGenerator->getSchemaName($dtoClass);
                     $schemas[$schemaName] = $schema;
                 }
-            } catch (\Exception $e) {
+            } catch (Throwable $e) {
                 $output->writeln(sprintf(
                     '<error>   Failed to generate schema for %s: %s</error>',
                     $this->getShortClassName($dtoClass),
@@ -155,6 +166,7 @@ final class GenerateOpenApiCommand extends Command
                 ));
             }
         }
+
         $output->writeln(sprintf('<comment>   Generated %d schemas</comment>', count($schemas)));
 
         // Step 3: Build OpenAPI spec
@@ -193,6 +205,7 @@ final class GenerateOpenApiCommand extends Command
 
             // Create output directory if it doesn't exist
             $outputDir = dirname($openapiConfig->outputPath);
+
             if (! is_dir($outputDir)) {
                 mkdir($outputDir, 0755, true);
             }
@@ -207,8 +220,9 @@ final class GenerateOpenApiCommand extends Command
                 file_put_contents($jsonPath, $json);
                 $output->writeln(sprintf('<comment>   ✓ %s</comment>', $jsonPath));
             }
-        } catch (\Exception $e) {
+        } catch (Throwable $e) {
             $output->writeln(sprintf('<error>   Failed to write files: %s</error>', $e->getMessage()));
+
             return Command::FAILURE;
         }
 
@@ -287,8 +301,7 @@ final class GenerateOpenApiCommand extends Command
     private function getShortClassName(string $fullClassName): string
     {
         $parts = explode('\\', $fullClassName);
+
         return end($parts);
     }
 }
-
-

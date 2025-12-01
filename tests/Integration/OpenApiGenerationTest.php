@@ -152,4 +152,3 @@ final class OpenApiGenerationTest extends TestCase
         $this->assertArrayHasKey('delete', $operations);
     }
 }
-

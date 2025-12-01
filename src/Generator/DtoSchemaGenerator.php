@@ -146,7 +146,7 @@ final class DtoSchemaGenerator
                 // Array - check PHPDoc for item type
                 $schema = $this->typeResolver->generateArraySchema(
                     $property,
-                    fn (string $class) => $this->getSchemaName($class)
+                    fn (string $class) => $this->getSchemaName($class),
                 );
             } else {
                 // Scalar type
@@ -161,7 +161,7 @@ final class DtoSchemaGenerator
             // Union type - generate oneOf
             $schema = $this->typeResolver->generateUnionTypeSchema(
                 $type,
-                fn (string $class) => $this->getSchemaName($class)
+                fn (string $class) => $this->getSchemaName($class),
             );
             $nullable = $type->allowsNull();
         }

@@ -37,8 +37,11 @@ final class SecuritySchemeGenerator
      * @param string $in Location: header, query, or cookie
      * @return array<string, mixed>
      */
-    public static function apiKey(string $name = 'apiKey', string $paramName = 'X-API-Key', string $in = 'header'): array
-    {
+    public static function apiKey(
+        string $name = 'apiKey',
+        string $paramName = 'X-API-Key',
+        string $in = 'header',
+    ): array {
         return [
             $name => [
                 'type' => 'apiKey',

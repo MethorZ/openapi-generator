@@ -6,6 +6,7 @@ namespace MethorZ\OpenApi\Tests\Unit\Config;
 
 use MethorZ\OpenApi\Config\OpenApiConfig;
 use PHPUnit\Framework\TestCase;
+use RuntimeException;
 
 final class OpenApiConfigTest extends TestCase
 {
@@ -157,10 +158,9 @@ final class OpenApiConfigTest extends TestCase
 
     public function testFromYamlFileThrowsExceptionForNonExistentFile(): void
     {
-        $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage('Config file not found:');
 
         OpenApiConfig::fromYamlFile('/nonexistent/file.yaml');
     }
 }
-

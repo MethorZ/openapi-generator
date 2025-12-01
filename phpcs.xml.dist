@@ -23,6 +23,13 @@
     <rule ref="SlevomatCodingStandard">
         <!-- Disable ClassStructure sniff (too complex to configure) -->
         <exclude name="SlevomatCodingStandard.Classes.ClassStructure"/>
+        <!-- Disable deprecated UnionTypeHintFormat (replaced by DNFTypeHintFormat) -->
+        <exclude name="SlevomatCodingStandard.TypeHints.UnionTypeHintFormat"/>
+
+        <!-- Disable conflicting sniffs -->
+        <exclude name="SlevomatCodingStandard.ControlStructures.NewWithoutParentheses"/>
+        <exclude name="SlevomatCodingStandard.Commenting.RequireOneLinePropertyDocComment"/>
+        <exclude name="SlevomatCodingStandard.Namespaces.UseSpacing"/>
 
         <!-- Disable some overly strict rules -->
         <exclude name="SlevomatCodingStandard.TypeHints.DisallowMixedTypeHint"/>
@@ -50,6 +57,13 @@
     <rule ref="SlevomatCodingStandard.Namespaces.UnusedUses">
         <properties>
             <property name="searchAnnotations" value="true"/>
+        </properties>
+    </rule>
+
+    <!-- Attributes order (alphabetically) -->
+    <rule ref="SlevomatCodingStandard.Attributes.AttributesOrder">
+        <properties>
+            <property name="orderAlphabetically" value="true"/>
         </properties>
     </rule>
 
@@ -151,6 +165,21 @@
     <!-- Allow passing by reference when needed -->
     <rule ref="SlevomatCodingStandard.PHP.DisallowReference">
         <exclude name="SlevomatCodingStandard.PHP.DisallowReference"/>
+    </rule>
+
+    <!-- Disable public properties rule for tests (test fixtures need them) -->
+    <rule ref="SlevomatCodingStandard.Classes.ForbiddenPublicProperty">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+
+    <!-- Disable unused parameter for tests (closures with unused params) -->
+    <rule ref="SlevomatCodingStandard.Functions.UnusedParameter">
+        <exclude-pattern>*/tests/*</exclude-pattern>
+    </rule>
+
+    <!-- Disable inline doc comment check for tests -->
+    <rule ref="SlevomatCodingStandard.Commenting.InlineDocCommentDeclaration">
+        <exclude-pattern>*/tests/*</exclude-pattern>
     </rule>
 
     <!-- Exclude vendor and cache directories -->

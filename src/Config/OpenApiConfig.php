@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace MethorZ\OpenApi\Config;
 
+use RuntimeException;
+use Symfony\Component\Yaml\Yaml;
+
 use function file_exists;
 use function file_get_contents;
 use function is_array;
@@ -86,19 +89,19 @@ final readonly class OpenApiConfig
     public static function fromYamlFile(string $path): self
     {
         if (! file_exists($path) || ! is_file($path)) {
-            throw new \RuntimeException("Config file not found: {$path}");
+            throw new RuntimeException("Config file not found: {$path}");
         }
 
         $content = file_get_contents($path);
 
         if ($content === false) {
-            throw new \RuntimeException("Failed to read config file: {$path}");
+            throw new RuntimeException("Failed to read config file: {$path}");
         }
 
-        $config = \Symfony\Component\Yaml\Yaml::parse($content);
+        $config = Yaml::parse($content);
 
         if (! is_array($config)) {
-            throw new \RuntimeException("Invalid config file format: {$path}");
+            throw new RuntimeException("Invalid config file format: {$path}");
         }
 
         return self::fromArray($config);
@@ -137,4 +140,3 @@ final readonly class OpenApiConfig
         ];
     }
 }
-

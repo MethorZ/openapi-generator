@@ -26,6 +26,20 @@ Automatically generates OpenAPI specifications by analyzing your application's r
 
 ---
 
+## 📋 Requirements
+
+This package requires PHP 8.2+ and uses the following runtime dependencies:
+
+| Package | Purpose | Framework Required? |
+|---------|---------|---------------------|
+| `psr/container` | PSR-11 Container Interface | ❌ No |
+| `symfony/console` | CLI command handling | ❌ No (standalone utility) |
+| `symfony/yaml` | YAML file parsing/writing | ❌ No (standalone utility) |
+
+> **Note**: The Symfony packages used are **standalone utility libraries**, not framework components. They work independently without the Symfony framework and are used by many non-Symfony projects (Composer, PHPStan, PHPUnit, etc.).
+
+---
+
 ## 📦 Installation
 
 ```bash
@@ -495,8 +509,17 @@ MIT License. See [LICENSE](LICENSE) for details.
 
 ## 🔗 Related Packages
 
-- **[methorz/http-dto](https://github.com/methorz/http-dto)** - Automatic DTO mapping and validation
-- **[mezzio/mezzio](https://github.com/mezzio/mezzio)** - PSR-15 middleware microframework
+This package is part of the MethorZ HTTP middleware ecosystem:
+
+| Package | Description |
+|---------|-------------|
+| **[methorz/http-dto](https://github.com/methorz/http-dto)** | Automatic HTTP ↔ DTO conversion with validation |
+| **[methorz/http-problem-details](https://github.com/methorz/http-problem-details)** | RFC 7807 error handling middleware |
+| **[methorz/http-cache-middleware](https://github.com/methorz/http-cache-middleware)** | HTTP caching with ETag support |
+| **[methorz/http-request-logger](https://github.com/methorz/http-request-logger)** | Structured logging with request tracking |
+| **[methorz/openapi-generator](https://github.com/methorz/openapi-generator)** | Automatic OpenAPI spec generation (this package) |
+
+These packages work together seamlessly in PSR-15 applications.
 
 ---
 
@@ -513,6 +536,14 @@ Built with:
 
 - **Issues**: [GitHub Issues](https://github.com/methorz/openapi-generator/issues)
 - **Discussions**: [GitHub Discussions](https://github.com/methorz/openapi-generator/discussions)
+
+---
+
+## 🔗 Links
+
+- [Changelog](CHANGELOG.md)
+- [Contributing](CONTRIBUTING.md)
+- [Security](SECURITY.md)
 
 ---
 

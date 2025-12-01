@@ -1,296 +1,85 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Analyzer\\\\HandlerAnalyzer\\:\\:analyze\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: src/Analyzer/HandlerAnalyzer.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Command\\\\GenerateOpenApiCommand\\:\\:configure\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\InvalidArgumentException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 6
-			path: src/Command/GenerateOpenApiCommand.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Command\\\\GenerateOpenApiCommand\\:\\:execute\\(\\) throws checked exception Psr\\\\Container\\\\ContainerExceptionInterface but it's missing from the PHPDoc @throws tag\\.$#"
+			message: '#^Parameter \#1 \$config of class MethorZ\\OpenApi\\Generator\\RouteScanner constructor expects array\<string, mixed\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Command/GenerateOpenApiCommand.php
 
 		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Command\\\\GenerateOpenApiCommand\\:\\:execute\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\InvalidArgumentException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 5
-			path: src/Command/GenerateOpenApiCommand.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Command\\\\GenerateOpenApiCommand\\:\\:findAllDtos\\(\\) throws checked exception UnexpectedValueException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: src/Command/GenerateOpenApiCommand.php
-
-		-
-			message: "#^Parameter \\#1 \\$config of class MethorZ\\\\OpenApi\\\\Generator\\\\RouteScanner constructor expects array\\<string, mixed\\>, array given\\.$#"
-			count: 1
-			path: src/Command/GenerateOpenApiCommand.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Config\\\\OpenApiConfig\\:\\:fromYamlFile\\(\\) throws checked exception RuntimeException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 3
-			path: src/Config/OpenApiConfig.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Config\\\\OpenApiConfig\\:\\:fromYamlFile\\(\\) throws checked exception Symfony\\\\Component\\\\Yaml\\\\Exception\\\\ParseException but it's missing from the PHPDoc @throws tag\\.$#"
+			message: '#^Parameter \#1 \$config of static method MethorZ\\OpenApi\\Config\\OpenApiConfig\:\:fromArray\(\) expects array\<string, mixed\>, array\<mixed, mixed\> given\.$#'
+			identifier: argument.type
 			count: 1
 			path: src/Config/OpenApiConfig.php
 
 		-
-			message: "#^Parameter \\#1 \\$config of static method MethorZ\\\\OpenApi\\\\Config\\\\OpenApiConfig\\:\\:fromArray\\(\\) expects array\\<string, mixed\\>, array given\\.$#"
-			count: 1
-			path: src/Config/OpenApiConfig.php
-
-		-
-			message: "#^Cannot access offset 'nullable' on mixed\\.$#"
-			count: 1
-			path: src/Generator/DtoSchemaGenerator.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Generator\\\\DtoSchemaGenerator\\:\\:extractPropertySchema\\(\\) should return array\\{schema\\: array\\<string, mixed\\>, required\\: bool\\} but returns array\\{schema\\: mixed, required\\: bool\\}\\.$#"
-			count: 1
-			path: src/Generator/DtoSchemaGenerator.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Generator\\\\RouteScanner\\:\\:scanRoutes\\(\\) should return array\\<string, array\\<string, mixed\\>\\> but returns array\\<array\\<string, array\\<string, mixed\\>\\>\\>\\.$#"
-			count: 1
+			message: '#^Possibly invalid array key type mixed\.$#'
+			identifier: offsetAccess.invalidOffset
+			count: 4
 			path: src/Generator/RouteScanner.php
 
 		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Generator\\\\TypeResolver\\:\\:generateEnumSchema\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
+			message: '#^Instanceof between ReflectionNamedType and ReflectionNamedType will always evaluate to true\.$#'
+			identifier: instanceof.alwaysTrue
 			count: 1
 			path: src/Generator/TypeResolver.php
 
 		-
-			message: "#^Cannot access offset 'type' on mixed\\.$#"
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, array\<string, mixed\>\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 1
+			path: tests/Integration/OpenApiGenerationTest.php
+
+		-
+			message: '#^Cannot access offset ''type'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 3
 			path: tests/Integration/OpenApiGenerationTest.php
 
 		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Command\\\\GenerateOpenApiCommandTest\\:\\:createMockContainer\\(\\) throws checked exception PHPUnit\\\\Event\\\\NoPreviousThrowableException but it's missing from the PHPDoc @throws tag\\.$#"
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\{requestDto\: string\|null, responseDto\: string\|null\} will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
 			count: 1
-			path: tests/Unit/Command/GenerateOpenApiCommandTest.php
+			path: tests/Unit/Analyzer/HandlerAnalyzerTest.php
 
 		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Command\\\\GenerateOpenApiCommandTest\\:\\:testCommandCanBeAddedToApplication\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\LogicException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Command/GenerateOpenApiCommandTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Command\\\\GenerateOpenApiCommandTest\\:\\:testCommandHasConfigArgument\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\LogicException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Command/GenerateOpenApiCommandTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Command\\\\GenerateOpenApiCommandTest\\:\\:testCommandHasName\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\LogicException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Command/GenerateOpenApiCommandTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Command\\\\GenerateOpenApiCommandTest\\:\\:testCommandHasOutputOption\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\LogicException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Command/GenerateOpenApiCommandTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Command\\\\GenerateOpenApiCommandTest\\:\\:testCommandIsConfigured\\(\\) throws checked exception Symfony\\\\Component\\\\Console\\\\Exception\\\\LogicException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Command/GenerateOpenApiCommandTest.php
-
-		-
-			message: "#^Cannot access offset 'format' on mixed\\.$#"
-			count: 4
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Cannot access offset 'maxLength' on mixed\\.$#"
-			count: 2
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Cannot access offset 'maximum' on mixed\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Cannot access offset 'minLength' on mixed\\.$#"
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<int, array\<string, mixed\>\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
 			count: 3
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
+			path: tests/Unit/Config/OpenApiConfigTest.php
 
 		-
-			message: "#^Cannot access offset 'minimum' on mixed\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:112 has an uninitialized property \\$email\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:129 has an uninitialized property \\$website\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:146 has an uninitialized property \\$email\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:170 has an uninitialized property \\$plainProperty\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:186 has an uninitialized property \\$id\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:199 has an uninitialized property \\$name\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:211 has an uninitialized property \\$email\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:23 has an uninitialized property \\$name\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:39 has an uninitialized property \\$id\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:56 has an uninitialized property \\$username\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:75 has an uninitialized property \\$code\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/ConstraintExtractorTest\\.php\\:93 has an uninitialized property \\$age\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithEmailSetsFormat\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithLengthOnlyMin\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithLengthSetsMinAndMax\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithMultipleConstraints\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithNoConstraints\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithNotBlankSetsRequired\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithRangeSetsMinAndMax\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithUrlSetsFormat\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testApplyConstraintsWithUuidSetsFormat\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testHasUuidConstraintReturnsFalseWhenAbsent\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testHasUuidConstraintReturnsFalseWithOtherConstraints\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\ConstraintExtractorTest\\:\\:testHasUuidConstraintReturnsTrueWhenPresent\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$array of method PHPUnit\\\\Framework\\\\Assert\\:\\:assertArrayHasKey\\(\\) expects array\\|ArrayAccess\\<\\(int\\|string\\), mixed\\>, mixed given\\.$#"
-			count: 11
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Parameter \\#2 \\$array of method PHPUnit\\\\Framework\\\\Assert\\:\\:assertArrayNotHasKey\\(\\) expects array\\|ArrayAccess\\<\\(int\\|string\\), mixed\\>, mixed given\\.$#"
-			count: 1
-			path: tests/Unit/Generator/ConstraintExtractorTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/TypeResolverTest\\.php\\:102 has an uninitialized property \\$value\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/TypeResolverTest.php
-
-		-
-			message: "#^Class class@anonymous/tests/Unit/Generator/TypeResolverTest\\.php\\:157 has an uninitialized property \\$value\\. Give it default value or assign it in the constructor\\.$#"
-			count: 1
-			path: tests/Unit/Generator/TypeResolverTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\TypeResolverTest\\:\\:testGenerateArraySchemaForSimpleArray\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/TypeResolverTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\TypeResolverTest\\:\\:testGenerateUnionTypeSchemaWithClassTypes\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/TypeResolverTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\TypeResolverTest\\:\\:testGenerateUnionTypeSchemaWithMultipleTypes\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
-			count: 1
-			path: tests/Unit/Generator/TypeResolverTest.php
-
-		-
-			message: "#^Method MethorZ\\\\OpenApi\\\\Tests\\\\Unit\\\\Generator\\\\TypeResolverTest\\:\\:testGenerateUnionTypeSchemaWithSingleNonNullTypeReturnsDirectType\\(\\) throws checked exception ReflectionException but it's missing from the PHPDoc @throws tag\\.$#"
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
 			count: 2
+			path: tests/Unit/Config/OpenApiConfigTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 2
+			path: tests/Unit/Generator/DtoSchemaGeneratorEnhancedTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 9
+			path: tests/Unit/Generator/DtoSchemaGeneratorTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 6
+			path: tests/Unit/Generator/SecuritySchemeGeneratorTest.php
+
+		-
+			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, mixed\> will always evaluate to true\.$#'
+			identifier: method.alreadyNarrowedType
+			count: 5
 			path: tests/Unit/Generator/TypeResolverTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$enumClass of method MethorZ\\\\OpenApi\\\\Generator\\\\TypeResolver\\:\\:generateEnumSchema\\(\\) expects class\\-string, string given\\.$#"
-			count: 1
-			path: tests/Unit/Generator/TypeResolverTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$objectOrClass of class ReflectionClass constructor expects class\\-string\\<TestNullableUnion\\>\\|TestNullableUnion, string given\\.$#"
+			message: '#^Parameter \#1 \$enumClass of method MethorZ\\OpenApi\\Generator\\TypeResolver\:\:generateEnumSchema\(\) expects class\-string, string given\.$#'
+			identifier: argument.type
 			count: 1
 			path: tests/Unit/Generator/TypeResolverTest.php
