@@ -30,24 +30,26 @@ final class RouteScanner
     {
         /** @var array<int, array<string, mixed>> $routes */
         $routes = $this->config['routes'] ?? [];
+
+        /** @var array<string, array<string, mixed>> $paths */
         $paths = [];
 
         /** @var array<string, mixed> $route */
         foreach ($routes as $route) {
-            $path = $route['path'] ?? null;
+            $pathValue = $route['path'] ?? null;
 
-            if (!$path) {
+            if (!is_string($pathValue) || $pathValue === '') {
                 continue;
             }
 
             $operations = $this->generateOperations($route);
 
             if (!empty($operations)) {
-                if (!isset($paths[$path])) {
-                    $paths[$path] = [];
+                if (!isset($paths[$pathValue])) {
+                    $paths[$pathValue] = [];
                 }
 
-                $paths[$path] = array_merge($paths[$path], $operations);
+                $paths[$pathValue] = array_merge($paths[$pathValue], $operations);
             }
         }
 

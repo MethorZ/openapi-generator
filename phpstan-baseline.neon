@@ -13,12 +13,6 @@ parameters:
 			path: src/Config/OpenApiConfig.php
 
 		-
-			message: '#^Possibly invalid array key type mixed\.$#'
-			identifier: offsetAccess.invalidOffset
-			count: 4
-			path: src/Generator/RouteScanner.php
-
-		-
 			message: '#^Instanceof between ReflectionNamedType and ReflectionNamedType will always evaluate to true\.$#'
 			identifier: instanceof.alwaysTrue
 			count: 1
