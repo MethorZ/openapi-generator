@@ -4,6 +4,7 @@
 
 [![CI](https://github.com/MethorZ/openapi-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/MethorZ/openapi-generator/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/MethorZ/openapi-generator/graph/badge.svg)](https://codecov.io/gh/MethorZ/openapi-generator)
+[![PHPStan](https://img.shields.io/badge/PHPStan-level%209-brightgreen.svg)](https://phpstan.org/)
 [![PHP Version](https://img.shields.io/badge/php-%5E8.2-blue)](https://php.net)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
