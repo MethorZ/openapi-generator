@@ -64,7 +64,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
           extensions: mbstring, json
           coverage: xdebug
 
@@ -72,13 +72,14 @@ jobs:
         run: composer install --prefer-dist --no-interaction --no-progress
 
       - name: Run tests with coverage
-        run: XDEBUG_MODE=coverage composer test:coverage
+        run: vendor/bin/phpunit --coverage-clover coverage.xml
 
       - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
+        uses: codecov/codecov-action@v4
         with:
-          files: ./.phpunit.cache/coverage-html/index.html
+          files: ./coverage.xml
           fail_ci_if_error: false
+          token: ${{ secrets.CODECOV_TOKEN }}
 
 
 
