@@ -13,6 +13,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - OpenAPI security scheme generation
 - Request/response examples generation
 
+## [1.1.0] - 2026-10-22
+
+### Changed
+- PHP requirement raised to `~8.4.27 || ~8.5.12` (releases patched for php2shell: CVE-2026-109618, CVE-2026-109619). PHP 8.2 and 8.3 are no longer supported.
+- Updated dependencies: symfony/console ^7.4 || ^8.1, symfony/yaml ^7.4 || ^8.1; development: symfony/validator ^7.4 || ^8.1, phpunit/phpunit ^13.4, phpstan/phpstan ^2.3, phpstan/phpstan-strict-rules ^2.1, slevomat/coding-standard ^8.31, squizlabs/php_codesniffer ^4.0.1.
+- CI now tests PHP 8.4.27 and 8.5.12.
+
 ## [0.2.0] - 2024-11-26
 
 ### Added - Phase 2: Core Enhancements

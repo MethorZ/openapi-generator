@@ -13,12 +13,6 @@ parameters:
 			path: src/Config/OpenApiConfig.php
 
 		-
-			message: '#^Instanceof between ReflectionNamedType and ReflectionNamedType will always evaluate to true\.$#'
-			identifier: instanceof.alwaysTrue
-			count: 1
-			path: src/Generator/TypeResolver.php
-
-		-
 			message: '#^Call to method PHPUnit\\Framework\\Assert\:\:assertIsArray\(\) with array\<string, array\<string, mixed\>\> will always evaluate to true\.$#'
 			identifier: method.alreadyNarrowedType
 			count: 1

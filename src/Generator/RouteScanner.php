@@ -9,15 +9,15 @@ use MethorZ\OpenApi\Analyzer\HandlerAnalyzer;
 /**
  * Scans application routes and generates OpenAPI paths
  */
-final class RouteScanner
+final readonly class RouteScanner
 {
     /**
      * @param array<string, mixed> $config
      */
     public function __construct(
-        private readonly array $config,
-        private readonly HandlerAnalyzer $handlerAnalyzer,
-        private readonly DtoSchemaGenerator $schemaGenerator,
+        private array $config,
+        private HandlerAnalyzer $handlerAnalyzer,
+        private DtoSchemaGenerator $schemaGenerator,
     ) {
     }
 

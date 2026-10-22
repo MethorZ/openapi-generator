@@ -11,9 +11,9 @@ use Symfony\Component\Console\Application;
 
 final class GenerateOpenApiCommandTest extends TestCase
 {
-    private function createMockContainer(): ContainerInterface
+    private function createContainerStub(): ContainerInterface
     {
-        $container = $this->createMock(ContainerInterface::class);
+        $container = $this->createStub(ContainerInterface::class);
         $container->method('get')->willReturn([]);
 
         return $container;
@@ -21,7 +21,7 @@ final class GenerateOpenApiCommandTest extends TestCase
 
     public function testCommandIsConfigured(): void
     {
-        $command = new GenerateOpenApiCommand($this->createMockContainer());
+        $command = new GenerateOpenApiCommand($this->createContainerStub());
 
         $this->assertSame('openapi:generate', $command->getName());
         $this->assertNotEmpty($command->getDescription());
@@ -29,7 +29,7 @@ final class GenerateOpenApiCommandTest extends TestCase
 
     public function testCommandHasConfigArgument(): void
     {
-        $command = new GenerateOpenApiCommand($this->createMockContainer());
+        $command = new GenerateOpenApiCommand($this->createContainerStub());
         $definition = $command->getDefinition();
 
         $this->assertTrue($definition->hasArgument('config'));
@@ -37,7 +37,7 @@ final class GenerateOpenApiCommandTest extends TestCase
 
     public function testCommandHasOutputOption(): void
     {
-        $command = new GenerateOpenApiCommand($this->createMockContainer());
+        $command = new GenerateOpenApiCommand($this->createContainerStub());
         $definition = $command->getDefinition();
 
         $this->assertTrue($definition->hasOption('output'));
@@ -46,16 +46,16 @@ final class GenerateOpenApiCommandTest extends TestCase
     public function testCommandCanBeAddedToApplication(): void
     {
         $application = new Application();
-        $command = new GenerateOpenApiCommand($this->createMockContainer());
+        $command = new GenerateOpenApiCommand($this->createContainerStub());
 
-        $application->add($command);
+        $application->addCommand($command);
 
         $this->assertTrue($application->has('openapi:generate'));
     }
 
     public function testCommandHasName(): void
     {
-        $command = new GenerateOpenApiCommand($this->createMockContainer());
+        $command = new GenerateOpenApiCommand($this->createContainerStub());
 
         $this->assertSame('openapi:generate', $command->getName());
     }

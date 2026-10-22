@@ -5,7 +5,7 @@
 [![CI](https://github.com/MethorZ/openapi-generator/actions/workflows/ci.yml/badge.svg)](https://github.com/MethorZ/openapi-generator/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/MethorZ/openapi-generator/graph/badge.svg)](https://codecov.io/gh/MethorZ/openapi-generator)
 [![PHPStan](https://img.shields.io/badge/PHPStan-level%209-brightgreen.svg)](https://phpstan.org/)
-[![PHP Version](https://img.shields.io/badge/php-%5E8.2-blue)](https://php.net)
+[![PHP Version](https://img.shields.io/badge/php-~8.4.27%20%7C%7C%20~8.5.12-blue)](https://php.net)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
 Automatically generates OpenAPI specifications by analyzing your application's routes and Data Transfer Objects (DTOs). Perfect for Mezzio, Laminas, and any PSR-15 application.
@@ -31,7 +31,7 @@ Automatically generates OpenAPI specifications by analyzing your application's r
 
 ## 📋 Requirements
 
-This package requires PHP 8.2+ and uses the following runtime dependencies:
+This package requires PHP 8.4 (>= 8.4.27) or PHP 8.5 (>= 8.5.12) and uses the following runtime dependencies:
 
 | Package | Purpose | Framework Required? |
 |---------|---------|---------------------|
